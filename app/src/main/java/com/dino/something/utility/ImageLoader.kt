@@ -19,7 +19,7 @@ object ImageHandler{
                     .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .circleCrop())
-            .error(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_male_placeholder)
             .into(imageView)
     }
 }

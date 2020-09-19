@@ -59,7 +59,7 @@
                     android:id="@+id/profileImage"
                     android:layout_width="77dp"
                     android:layout_height="77dp"
-                    android:layout_marginTop="100dp"
+                    android:layout_marginTop="30dp"
                     android:contentDescription="@string/profile_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -71,10 +71,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="26dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="26dp"
+                    android:textColor="@color/colorBlack"
                     android:gravity="center_horizontal"
-                    android:textSize="15sp"
+                    android:textSize="28sp"
                     android:text="@{employee.name}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +89,7 @@
                     android:layout_marginTop="14dp"
                     android:layout_marginEnd="26dp"
                     android:gravity="center_horizontal"
-                    android:textSize="14sp"
+                    android:textSize="15sp"
                     android:text="@{employee.username}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +100,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="26dp"
-                    android:layout_marginTop="17dp"
+                    android:layout_marginTop="6dp"
                     android:layout_marginEnd="26dp"
                     android:gravity="center_horizontal"
                     android:textSize="14sp"
@@ -109,18 +110,33 @@
                     app:layout_constraintTop_toBottomOf="@+id/userName" />
 
                 <TextView
+                    android:id="@+id/addressText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:gravity="center_horizontal"
+                    android:textSize="14sp"
+                    android:text="@string/address"
+                    android:textColor="@color/colorBlack"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/email" />
+
+                <TextView
                     android:id="@+id/address"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="26dp"
-                    android:layout_marginTop="17dp"
-                    android:layout_marginEnd="26dp"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="@dimen/margin"
                     android:gravity="center_horizontal"
                     android:textSize="14sp"
                     android:text="@{employee.address.employeeAddress()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/email" />
+                    app:layout_constraintTop_toBottomOf="@+id/addressText" />
 
                 <TextView
                     android:id="@+id/phone"
@@ -151,18 +167,33 @@
                     app:layout_constraintTop_toBottomOf="@+id/phone" />
 
                 <TextView
+                    android:id="@+id/companyTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="@dimen/margin"
+                    android:layout_marginEnd="@dimen/margin"
+                    android:gravity="center_horizontal"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorBlack"
+                    android:text="@string/company_details"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/website" />
+
+                <TextView
                     android:id="@+id/companyDetails"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="26dp"
-                    android:layout_marginTop="17dp"
-                    android:layout_marginEnd="26dp"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="@dimen/margin"
                     android:gravity="center_horizontal"
                     android:textSize="14sp"
                     android:text="@{employee.company.companyDetails()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/website" />
+                    app:layout_constraintTop_toBottomOf="@+id/companyTitle" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

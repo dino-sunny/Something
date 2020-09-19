@@ -16,11 +16,10 @@
         <activity
             android:name=".module.home.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".module.splash.SplashScreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_splash_screen"
             android:screenOrientation="portrait">
             <intent-filter>

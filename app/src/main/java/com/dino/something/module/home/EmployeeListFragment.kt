@@ -46,7 +46,7 @@ class EmployeeListFragment : Fragment() {
                 val mData = Gson().toJson(it)
                 findNavController().navigate(
                     EmployeeListFragmentDirections
-                        .actionFirstFragmentToSecondFragment(mData)
+                        .actionEmployeeListFragmentToEmployeeDetailFragment(mData)
                 )
                 viewModel.onEmployeeNavigated()
             }
