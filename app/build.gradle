@@ -1,10 +1,17 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+
+//def keystorePropertiesFile = rootProject.file("keystore.properties")
+//def keystoreProperties = new Properties()
+//keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
+    flavorDimensions "default"
 
     defaultConfig {
         applicationId "com.dino.something"
@@ -13,13 +20,55 @@ android {
         versionCode 1
         versionName "1.0"
 
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+//    signingConfigs {
+//        release {
+//            storeFile file(keystoreProperties['key_store_certificate'])
+//            storePassword keystoreProperties['key_store_password']
+//            keyAlias keystoreProperties['key_alias']
+//            keyPassword keystoreProperties['key_password']
+//        }
+//    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    productFlavors {
+        //Build to get QA apk
+        qa {
+            buildConfigField 'String', 'BASEURL', '"http://www.mocky.io/v2"'
+        }
+        //Build to get release apk
+        production {
+            buildConfigField 'String', 'BASEURL', '"http://www.mocky.io/v2"'
+        }
+        //Build to get developer apk
+        debuging {
+            buildConfigField 'String', 'BASEURL', '"http://www.mocky.io/v2/"'
         }
     }
 }
@@ -32,6 +81,26 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+
+    // retrofit2
+    implementation "com.squareup.retrofit2:retrofit:2.8.1"
+    implementation "com.squareup.retrofit2:converter-moshi:2.7.1"
+
+    implementation "com.squareup.okhttp3:logging-interceptor:4.0.1"
+    implementation "com.squareup.okhttp3:okhttp:4.0.1"
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+
+    implementation "com.squareup.moshi:moshi-kotlin:1.8.0"
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //Image Loader
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
