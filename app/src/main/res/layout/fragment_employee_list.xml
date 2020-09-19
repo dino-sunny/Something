@@ -17,27 +17,12 @@
             android:id="@+id/search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:visibility="invisible"
-            app:iconifiedByDefault="true"
+            android:visibility="visible"
+            app:queryHint="@string/search_query_hint"
+            app:iconifiedByDefault="false"
             android:layoutDirection="rtl"
+            android:inputType="textCapSentences"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/departmentTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:gravity="center"
-            android:textSize="@dimen/title"
-            android:textColor="@color/colorBlack"
-            android:text="@string/employee_list"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

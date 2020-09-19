@@ -13,4 +13,5 @@
     <string name="my_employee_list">My Employee List</string>
     <string name="company_details">Company Details</string>
     <string name="address">Address</string>
+    <string name="search_query_hint">Enter full name</string>
 </resources>

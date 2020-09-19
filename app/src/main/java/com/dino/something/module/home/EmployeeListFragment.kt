@@ -12,11 +12,14 @@ import com.dino.something.R
 import com.dino.something.databinding.FragmentEmployeeListBinding
 import com.google.gson.Gson
 
-class EmployeeListFragment : Fragment() {
+class EmployeeListFragment : Fragment(),
+    androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
     private lateinit var viewModel: EmployeeListViewModel
     private lateinit var binding: FragmentEmployeeListBinding
     private lateinit var employeeListAdapter: EmployeeAdapter
+    private lateinit var list: List<Employee>
+    var searchList: MutableList<Employee> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +29,8 @@ class EmployeeListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_employee_list, container, false)
         viewModel = ViewModelProvider(this).get(EmployeeListViewModel::class.java)
         binding.viewModel = viewModel
+
+        binding.search.setOnQueryTextListener(this)
 
         setAdapter()
         setObservers()
@@ -38,6 +43,7 @@ class EmployeeListFragment : Fragment() {
             it?.let { list ->
                 if (list.isNotEmpty()) {
                     employeeListAdapter.submitList(list)
+                    this.list = list
                 }
             }
         })
@@ -60,5 +66,27 @@ class EmployeeListFragment : Fragment() {
                 viewModel.onEmployeeClicked(employee)
             })
         binding.employeeList.adapter = employeeListAdapter
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(searchKey: String?): Boolean {
+        if (searchKey == "") {
+            employeeListAdapter.submitList(list)
+        } else {
+            employeeListAdapter.submitList(getSearchList(searchKey))
+        }
+        return true
+    }
+
+    private fun getSearchList(searchKey: String?): MutableList<Employee>? {
+        val event = list.find { it.name!!.contains(searchKey.toString()) || it.email!!.contains(searchKey.toString()) }
+        searchList.clear()
+        if (event != null) {
+            searchList.add(event)
+        }
+        return searchList
     }
 }
