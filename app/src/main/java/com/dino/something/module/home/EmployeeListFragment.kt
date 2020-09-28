@@ -19,7 +19,7 @@ class EmployeeListFragment : Fragment(),
     private lateinit var binding: FragmentEmployeeListBinding
     private lateinit var employeeListAdapter: EmployeeAdapter
     private lateinit var list: List<Employee>
-    var searchList: MutableList<Employee> = mutableListOf()
+    private var searchList: MutableList<Employee> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
