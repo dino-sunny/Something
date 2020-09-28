@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.dino.something.module.home.Employee
 
 
 @Database(entities = [EmployeeData::class], version = 1,exportSchema = false)

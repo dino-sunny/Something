@@ -20,7 +20,7 @@ data class CompanyDetails(
     ){
     fun companyDetails(): String {
         try {
-            return "${name}, ${catchPhrase}, ${bs}"
+            return "${name}, ${catchPhrase}, $bs"
 
         } catch (e: NullPointerException) {
             Timber.d("KotlinNullPointerException")
@@ -38,7 +38,7 @@ data class Address(
 ){
     fun employeeAddress(): String {
         try {
-            return "${street}, ${suit}, ${city}, ${zipcode} "
+            return "${street}, ${suit}, ${city}, $zipcode "
 
         } catch (e: NullPointerException) {
             Timber.d("KotlinNullPointerException")

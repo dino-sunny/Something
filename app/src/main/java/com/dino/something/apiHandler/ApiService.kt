@@ -13,6 +13,8 @@ interface ApiService {
         }
     }
 
+    /**
+     * Employee List*/
     @GET("5d565297300000680030a986")
     suspend fun getEmployeeList(): Response<List<Employee>?>
 }

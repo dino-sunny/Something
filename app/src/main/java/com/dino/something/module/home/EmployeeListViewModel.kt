@@ -13,8 +13,7 @@ class EmployeeListViewModel : ViewModel(){
     val response: LiveData<List<Employee>?> get() = employeeResponse
 
     private val _navigateToDetail = MutableLiveData<Employee>()
-    val eventNavigateEmployee: LiveData<Employee>
-        get() = _navigateToDetail
+    val eventNavigateEmployee: LiveData<Employee> get() = _navigateToDetail
 
     fun onEmployeeClicked(doctor: Employee) {
         _navigateToDetail.value = doctor
